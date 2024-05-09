@@ -7,20 +7,23 @@ substitutions:
   project_name: "Athom Technology.Smart Plug V3"
   # Projection version denotes the release version of the yaml file, allowing checking of deployed vs latest version
   project_version: "v1.0.1"
-  relay_restore_mode: RESTORE_DEFAULT_OFF
+  relay_restore_mode: RESTORE_DEFAULT_ON
   sensor_update_interval: 10s
   # Current Limit in Amps. AU Plug = 10. IL, BR, EU, UK, US Plug = 16.
-  current_limit : "16"
+  current_limit : "10"
   # Define a domain for this device to use. i.e. iot.home.lan (so device will appear as athom-smart-plug-v2.iot.home.lan in DNS/DHCP logs)
-  dns_domain: ""
+  dns_domain: ".iot.home.lan"
   # Set timezone of the smart plug. Useful if the plug is in a location different to the HA server. Can be entered in unix Country/Area format (i.e. "Australia/Sydney")
-  timezone: ""
+  timezone: "Australia/Sydney"
+  # Set the duration between the sntp service polling ntp.org servers for an update
+  sntp_update_interval: 6h
   # Enables faster network connections, with last connected SSID being connected to and no full scan for SSID being undertaken
-  wifi_fast_connect: "false"
+  wifi_fast_connect: "true"
 
 esphome:
   name: "${name}"
   friendly_name: "${friendly_name}"
+  comment: "${device_description}}"
   area: "${room}"  
   name_add_mac_suffix: true
   project:
@@ -83,7 +86,7 @@ globals:
 
 binary_sensor:
   - platform: status
-    name: "Status"
+    name: "Device Status"
     entity_category: diagnostic    
 
   - platform: gpio
@@ -111,22 +114,25 @@ sensor:
     entity_category: diagnostic
     internal: true
 
-  - platform: wifi_signal
-    name: "WiFi Signal"
-    id: wifi_signal_db
-    update_interval: 60s
-    entity_category: diagnostic
-    internal: true
+  # Reports the WiFi signal strength/RSSI in dB
+#  - platform: wifi_signal
+#    id: wifi_signal_db
+#    name: "WiFi Signal dB"
+#    update_interval: 5min
+#    entity_category: "diagnostic"
+#    internal: true
 
   # Reports the WiFi signal strength in %
-  - platform: copy
-    source_id: wifi_signal_db
-    name: "WiFi Strength"
-    filters:
-      - lambda: return min(max(2 * (x + 100.0), 0.0), 100.0);
-    unit_of_measurement: "%"
-    entity_category: diagnostic
+#  - platform: copy
+#    source_id: wifi_signal_db
+#    name: "WiFi Signal"
+#    filters:
+#      - lambda: return min(max(2 * (x + 100.0), 0.0), 100.0);
+#    unit_of_measurement: "%"
+#    entity_category: "diagnostic"    
 
+
+  # Power / Current / Energy monitoring sensors
   - platform: cse7766
     current:
       name: "Current"
@@ -144,11 +150,11 @@ sensor:
         - throttle_average: ${sensor_update_interval}
 
     power:
-      name: "Power"
-      id: power_sensor
+      name: "Active Power"
+      id: active_power
       filters:
         - throttle_average: ${sensor_update_interval}
-        - lambda: if (x < 3.0) return 0.0; else return x;    #For the chip will report less than 3w power when no load is connected
+        - lambda: if (x < 0.3) return 0.0; else return x;    #For the chip will report less than 3w power when no load is connected
 
     energy:
       name: "Energy"
@@ -167,18 +173,21 @@ sensor:
               previous_energy_value = current_energy_value;
               id(total_energy_sensor).update();
 
+
     apparent_power:
       name: "Apparent Power"
       filters:
         - throttle_average: ${sensor_update_interval}
+    
     power_factor:
       name: "Power Factor"
       filters:
         - throttle_average: ${sensor_update_interval}
 
+
   - platform: template
-    name: "Total Energy"
-    id: total_energy_sensor
+    name: "Energy - Total"
+    id: energy_total
     unit_of_measurement: kWh
     device_class: "energy"
     state_class: "total_increasing"
@@ -188,10 +197,10 @@ sensor:
       return id(total_energy);
     update_interval: ${sensor_update_interval}
 
-  - platform: total_daily_energy
-    name: "Total Daily Energy"
+  - platform: energy_total_daily
+    name: "Energy - Total Daily"
     restore: true
-    power_id: power_sensor
+    power_id: active_power
     unit_of_measurement: kWh
     accuracy_decimals: 3
     filters:
@@ -199,29 +208,29 @@ sensor:
 
 button:
   - platform: restart
-    name: "Restart"
+    name: "Restart ESP"
     entity_category: config
 
   - platform: factory_reset
-    name: "Factory Reset"
+    name: "Reset ESP"
     id: Reset
     entity_category: config
 
   - platform: safe_mode
-    name: "Safe Mode"
+    name: "Restart Safe Mode"
     internal: false
     entity_category: config
 
 switch:
   - platform: gpio
-    name: "Switch"
+    name: "Outlet"
     pin: GPIO5
     id: relay
     restore_mode: ${relay_restore_mode}
 
 light:
   - platform: status_led
-    name: "Status LED"
+    name: "ESP Status LED"
     id: blue_led
     disabled_by_default: true
     pin:
@@ -231,22 +240,43 @@ light:
 text_sensor:
   - platform: wifi_info
     ip_address:
-      name: "IP Address"
+      name: "WiFi IP Address"
       entity_category: diagnostic
     ssid:
-      name: "Connected SSID"
+      name: "WiFi SSID"
       entity_category: diagnostic
     mac_address:
-      name: "Mac Address"
+      name: "WiFi MAC Address"
       entity_category: diagnostic
 
   #  Creates a sensor showing when the device was last restarted
   - platform: template
-    name: 'Last Restart'
-    id: device_last_restart
+    name: 'ESP Last Restart'
+    id: esp_last_restart
     icon: mdi:clock
     entity_category: diagnostic
 #    device_class: timestamp
+
+  #  Creates a sensor of the name of installed project
+  - platform: template
+    name: 'Project Name'
+    id: project_name
+    icon: "mdi:label-outline"
+    entity_category: diagnostic
+    lambda: |-
+      return {"${project_name}"};
+    update_interval: 6h
+
+  #  Creates a sensor of the version of installed project
+  - platform: template
+    name: 'Project Version'
+    id: project_version
+    icon: "mdi:label-outline"
+    entity_category: diagnostic
+    lambda: |-
+      return {"${project_version}"};
+    update_interval: 6h
+
 
   #  Creates a sensor of the uptime of the device, in formatted days, hours, minutes and seconds
   - platform: template
@@ -279,7 +309,7 @@ time:
   # Define the timezone of the device
     timezone: "${timezone}"
   # Change sync interval from default 5min to 6 hours
-    update_interval: 360min    
+    update_interval: "${sntp_update_interval}"
   # Publish the time the device was last restarted
     on_time_sync:
       then:

@@ -225,7 +225,7 @@ button:
 
 switch:
   - platform: gpio
-    name: "Outlet"
+    name: "GPO Status"
     pin: GPIO5
     id: relay
     restore_mode: ${relay_restore_mode}

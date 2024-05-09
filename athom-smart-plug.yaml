@@ -86,7 +86,7 @@ globals:
 
 binary_sensor:
   - platform: status
-    name: "Device Status"
+    name: "ESP Status"
     entity_category: diagnostic    
 
   - platform: gpio

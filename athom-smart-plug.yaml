@@ -86,7 +86,7 @@ globals:
 
 binary_sensor:
   - platform: status
-    name: "ESP Status"
+    name: "Device Status"
     entity_category: diagnostic    
 
   - platform: gpio
@@ -109,7 +109,7 @@ binary_sensor:
 
 sensor:
   - platform: uptime
-    name: "Uptime Sensor"
+    name: "Device Uptime Sensor"
     id: uptime_sensor
     entity_category: diagnostic
     internal: true
@@ -210,16 +210,16 @@ sensor:
 
 button:
   - platform: restart
-    name: "Restart ESP"
+    name: "Restart Device"
     entity_category: config
 
   - platform: factory_reset
-    name: "Reset ESP"
+    name: "Reset Device"
     id: Reset
     entity_category: config
 
   - platform: safe_mode
-    name: "Restart Safe Mode"
+    name: "Restart Device Safe Mode"
     internal: false
     entity_category: config
 
@@ -232,7 +232,7 @@ switch:
 
 light:
   - platform: status_led
-    name: "ESP Status LED"
+    name: "Device Status LED"
     id: blue_led
     disabled_by_default: true
     pin:
@@ -253,8 +253,8 @@ text_sensor:
 
   #  Creates a sensor showing when the device was last restarted
   - platform: template
-    name: 'ESP Last Restart'
-    id: esp_last_restart
+    name: 'Device Last Restart'
+    id: device_last_restart
     icon: mdi:clock
     entity_category: diagnostic
 #    device_class: timestamp
@@ -282,7 +282,7 @@ text_sensor:
 
   #  Creates a sensor of the uptime of the device, in formatted days, hours, minutes and seconds
   - platform: template
-    name: "ESP Uptime"
+    name: "Device Uptime"
     entity_category: diagnostic
     lambda: |-
       int seconds = (id(uptime_sensor).state);
@@ -318,8 +318,8 @@ time:
         # Update last restart time, but only once.
         - if:
             condition:
-              lambda: 'return id(esp_last_restart).state == "";'
+              lambda: 'return id(device_last_restart).state == "";'
             then:
               - text_sensor.template.publish:
-                  id: esp_last_restart
+                  id: device_last_restart
                   state: !lambda 'return id(sntp_time).now().strftime("%a %d %b %Y - %I:%M:%S %p");'

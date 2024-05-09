@@ -171,7 +171,7 @@ sensor:
               float current_energy_value = id(energy).state;
               id(total_energy) += current_energy_value - previous_energy_value;
               previous_energy_value = current_energy_value;
-              id(total_energy_sensor).update();
+              id(energy_total_sensor).update();
 
 
     apparent_power:
@@ -187,7 +187,7 @@ sensor:
 
   - platform: template
     name: "Energy Total"
-    id: total_energy_sensor
+    id: energy_total_sensor
     unit_of_measurement: kWh
     device_class: "energy"
     state_class: "total_increasing"
@@ -196,9 +196,11 @@ sensor:
     lambda: |-
       return id(total_energy);
     update_interval: ${sensor_update_interval}
+    
 
   - platform: total_daily_energy
-    name: "Energy Total Daily"
+    name: "Energy Daily"
+    id: energy_total_daily
     restore: true
     power_id: active_power
     unit_of_measurement: kWh

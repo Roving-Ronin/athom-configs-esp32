@@ -186,7 +186,7 @@ sensor:
 
 
   - platform: template
-    name: "Energy - Total"
+    name: "Energy Total"
     id: energy_total
     unit_of_measurement: kWh
     device_class: "energy"
@@ -197,8 +197,8 @@ sensor:
       return id(total_energy);
     update_interval: ${sensor_update_interval}
 
-  - platform: energy_total_daily
-    name: "Energy - Total Daily"
+  - platform: total_daily_energy
+    name: "Energy Total Daily"
     restore: true
     power_id: active_power
     unit_of_measurement: kWh

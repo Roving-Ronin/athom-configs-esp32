@@ -282,7 +282,7 @@ text_sensor:
 
   #  Creates a sensor of the uptime of the device, in formatted days, hours, minutes and seconds
   - platform: template
-    name: "Uptime"
+    name: "ESP Uptime"
     entity_category: diagnostic
     lambda: |-
       int seconds = (id(uptime_sensor).state);

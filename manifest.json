@@ -1,0 +1,125 @@
+{
+  "name": "Athom ESP32 Device",
+  "version": "",
+  "home_assistant_domain": "esphome",
+  "new_install_skip_erase": false,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "ota": {
+        "path": "athom-2ch-relay-board-esp32/athom-2ch-relay-board-esp32.ota.bin",
+        "md5": "1b86919d8a282129318509685551143c"
+      },
+      "parts": [
+        {
+          "path": "athom-2ch-relay-board-esp32/athom-2ch-relay-board-esp32.factory.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP32",
+      "ota": {
+        "path": "athom-4ch-relay-board-esp32/athom-4ch-relay-board-esp32.ota.bin",
+        "md5": "33effd1e5263e6ffb97b518c38fda870"
+      },
+      "parts": [
+        {
+          "path": "athom-4ch-relay-board-esp32/athom-4ch-relay-board-esp32.factory.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP32",
+      "ota": {
+        "path": "athom-8ch-relay-board-esp32/athom-8ch-relay-board-esp32.ota.bin",
+        "md5": "1b35a0454a79980c0eaaa4650a5b8da1"
+      },
+      "parts": [
+        {
+          "path": "athom-8ch-relay-board-esp32/athom-8ch-relay-board-esp32.factory.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-C3",
+      "ota": {
+        "path": "athom-em-2-esp32c3/athom-em-2-esp32c3.ota.bin",
+        "md5": "01ed5842aa04872aa6d278f5667b206f"
+      },
+      "parts": [
+        {
+          "path": "athom-em-2-esp32c3/athom-em-2-esp32c3.factory.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-C3",
+      "ota": {
+        "path": "athom-em-6-esp32c3/athom-em-6-esp32c3.ota.bin",
+        "md5": "112c9f5f0ff594299f266d3432489c03"
+      },
+      "parts": [
+        {
+          "path": "athom-em-6-esp32c3/athom-em-6-esp32c3.factory.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-C3",
+      "ota": {
+        "path": "athom-garage-door-esp32c3/athom-garage-door-esp32c3.ota.bin",
+        "md5": "4baff057f25f9e9cca1e407121ac1ab6"
+      },
+      "parts": [
+        {
+          "path": "athom-garage-door-esp32c3/athom-garage-door-esp32c3.factory.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-C3",
+      "ota": {
+        "path": "athom-mini-relay-v2-esp32c3/athom-mini-relay-v2-esp32c3.ota.bin",
+        "md5": "746a3b7a229b570071ad08c4fb4b4f36"
+      },
+      "parts": [
+        {
+          "path": "athom-mini-relay-v2-esp32c3/athom-mini-relay-v2-esp32c3.factory.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP32-C3",
+      "ota": {
+        "path": "athom-smart-plug-v3-esp32c3/athom-smart-plug-v3-esp32c3.ota.bin",
+        "md5": "b0345aeca7c202fd4d8e64c139ca0955"
+      },
+      "parts": [
+        {
+          "path": "athom-smart-plug-v3-esp32c3/athom-smart-plug-v3-esp32c3.factory.bin",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "chipFamily": "ESP32",
+      "ota": {
+        "path": "athom-zigbee-gateway-esp32/athom-zigbee-gateway-esp32.ota.bin",
+        "md5": "438343c649004284f1b0635f4e4dc887"
+      },
+      "parts": [
+        {
+          "path": "athom-zigbee-gateway-esp32/athom-zigbee-gateway-esp32.factory.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

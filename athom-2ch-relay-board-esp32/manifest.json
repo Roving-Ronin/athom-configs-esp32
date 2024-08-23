@@ -1,0 +1,13 @@
+{
+  "chipFamily": "ESP32",
+  "ota": {
+    "path": "athom-2ch-relay-board-esp32/athom-2ch-relay-board-esp32.ota.bin",
+    "md5": "1b86919d8a282129318509685551143c"
+  },
+  "parts": [
+    {
+      "path": "athom-2ch-relay-board-esp32/athom-2ch-relay-board-esp32.factory.bin",
+      "offset": 0
+    }
+  ]
+}

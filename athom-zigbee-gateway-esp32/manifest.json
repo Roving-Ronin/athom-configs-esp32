@@ -2,7 +2,7 @@
   "chipFamily": "ESP32",
   "ota": {
     "path": "athom-zigbee-gateway-esp32/athom-zigbee-gateway-esp32.ota.bin",
-    "md5": "e8c5e4a2d2db1a3af6179c280ebb0070"
+    "md5": "d5243c54082fbed31f0e3543e1d2f518"
   },
   "parts": [
     {

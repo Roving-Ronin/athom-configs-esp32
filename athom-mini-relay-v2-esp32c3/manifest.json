@@ -2,7 +2,7 @@
   "chipFamily": "ESP32-C3",
   "ota": {
     "path": "athom-mini-relay-v2-esp32c3/athom-mini-relay-v2-esp32c3.ota.bin",
-    "md5": "1c71dbe9d5f5c76718a01d5264cc2002"
+    "md5": "e7b0c59f168d23a89b2ec7852a2a0b9e"
   },
   "parts": [
     {

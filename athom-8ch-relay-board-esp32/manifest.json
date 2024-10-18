@@ -2,7 +2,7 @@
   "chipFamily": "ESP32",
   "ota": {
     "path": "athom-8ch-relay-board-esp32/athom-8ch-relay-board-esp32.ota.bin",
-    "md5": "c0bb37d56454fa97a4632825bc058c6b"
+    "md5": "467f30bb7b7c8cfe4189d5c34ccf01d7"
   },
   "parts": [
     {

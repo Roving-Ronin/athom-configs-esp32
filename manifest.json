@@ -8,7 +8,7 @@
       "chipFamily": "ESP32",
       "ota": {
         "path": "athom-2ch-relay-board-esp32/athom-2ch-relay-board-esp32.ota.bin",
-        "md5": "d29bbe243cc6f1aa6810aca6af166167"
+        "md5": "544a72e421694b1c415c1794a75a723b"
       },
       "parts": [
         {
@@ -21,7 +21,7 @@
       "chipFamily": "ESP32",
       "ota": {
         "path": "athom-4ch-relay-board-esp32/athom-4ch-relay-board-esp32.ota.bin",
-        "md5": "20bc1bb588b4e0c877efca5695ac758e"
+        "md5": "18d9547bba4fc36083b80ed3b015da31"
       },
       "parts": [
         {
@@ -34,7 +34,7 @@
       "chipFamily": "ESP32",
       "ota": {
         "path": "athom-8ch-relay-board-esp32/athom-8ch-relay-board-esp32.ota.bin",
-        "md5": "467f30bb7b7c8cfe4189d5c34ccf01d7"
+        "md5": "11f86139c4c3829e526ae2ed4fcd0d2c"
       },
       "parts": [
         {
@@ -47,7 +47,7 @@
       "chipFamily": "ESP32-C3",
       "ota": {
         "path": "athom-em-2-esp32c3/athom-em-2-esp32c3.ota.bin",
-        "md5": "a713999e5cb219d2b238f7ec1281ff64"
+        "md5": "3bb443319c71e86b881bb45ac457e07e"
       },
       "parts": [
         {
@@ -60,7 +60,7 @@
       "chipFamily": "ESP32-C3",
       "ota": {
         "path": "athom-em-6-esp32c3/athom-em-6-esp32c3.ota.bin",
-        "md5": "b93ddd466473ce4ee0d921e3b38a7458"
+        "md5": "bff5035d54b1c1da78afb67c39c485e4"
       },
       "parts": [
         {
@@ -73,7 +73,7 @@
       "chipFamily": "ESP32-C3",
       "ota": {
         "path": "athom-garage-door-esp32c3/athom-garage-door-esp32c3.ota.bin",
-        "md5": "b218ad4040f47ee47636fec1fada20f2"
+        "md5": "564de37fc66aef70559cefb9b699ccf2"
       },
       "parts": [
         {
@@ -86,7 +86,7 @@
       "chipFamily": "ESP32-C3",
       "ota": {
         "path": "athom-mini-relay-v2-esp32c3/athom-mini-relay-v2-esp32c3.ota.bin",
-        "md5": "b8a843f7558e5c326fabd49da83335a7"
+        "md5": "359fe4034b8b14bc12ae332c91673217"
       },
       "parts": [
         {
@@ -99,7 +99,7 @@
       "chipFamily": "ESP32-C3",
       "ota": {
         "path": "athom-smart-plug-v3-esp32c3/athom-smart-plug-v3-esp32c3.ota.bin",
-        "md5": "9216d352eb0bba50c9ce61a65f5c8d53"
+        "md5": "af0fab33573ea20ef7c90c209dc78186"
       },
       "parts": [
         {
@@ -112,7 +112,7 @@
       "chipFamily": "ESP32",
       "ota": {
         "path": "athom-zigbee-gateway-esp32/athom-zigbee-gateway-esp32.ota.bin",
-        "md5": "792c459ab3da86e68f841d22545af3df"
+        "md5": "16a483f5db697adb7d8b08a7b1f6c717"
       },
       "parts": [
         {

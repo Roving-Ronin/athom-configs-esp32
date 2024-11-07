@@ -2,7 +2,7 @@
   "chipFamily": "ESP32-C3",
   "ota": {
     "path": "athom-garage-door-esp32c3/athom-garage-door-esp32c3.ota.bin",
-    "md5": "b218ad4040f47ee47636fec1fada20f2"
+    "md5": "564de37fc66aef70559cefb9b699ccf2"
   },
   "parts": [
     {

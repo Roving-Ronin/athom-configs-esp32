@@ -2,7 +2,7 @@
   "chipFamily": "ESP32-C3",
   "ota": {
     "path": "athom-smart-plug-v3-esp32c3/athom-smart-plug-v3-esp32c3.ota.bin",
-    "md5": "9216d352eb0bba50c9ce61a65f5c8d53"
+    "md5": "af0fab33573ea20ef7c90c209dc78186"
   },
   "parts": [
     {
